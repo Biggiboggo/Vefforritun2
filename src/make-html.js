@@ -42,15 +42,35 @@ export function makeHTML(str, calcs) {
   return template;
 }
 
-export function makeIndex(entries) {
-  let list = '';
-  for (const entry of entries) {
-    const { path } = entry;
-    const link = `<li><a href="${`${path}.html`}">${path}</a></li>`;
-    list += link;
-  }
+export function makeIndex() {
+  return `<!DOCTYPE html>
+  <html lang="is">
 
-  return `<ul>${list}</ul>`;
+  <head>
+    <meta charset="UTF-8">
+    <title>Gagnavinnsla</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <h1>Útreikningar</h1>
+    <ul>
+      <li><a href="1.html">1.txt</a></li>
+      <li><a href="2.html">2.txt</a></li>
+      <li><a href="3.html">3.txt</a></li>
+      <li><a href="4.html">4.txt</a></li>
+      <li><a href="5.html">5.txt</a></li>
+      <li><a href="6.html">6.txt</a></li>
+      <li><a href="7.html">7.txt</a></li>
+      <li><a href="8.html">8.txt</a></li>
+      <li><a href="9.html">9.txt</a></li>
+      <li><a href="10.html">10.txt</a></li>
+      <li><a href="11.html">11.txt</a></li>
+      <li><a href="12.html">12.txt</a></li>
+    </ul>
+  </body>
+
+  </html>`;
 }
 
 /**

@@ -3,7 +3,7 @@ import { mkdir, readdir, readFile, stat, writeFile } from 'fs/promises';
 import { join } from 'path';
 import { calculations } from './calculations.js';
 import { direxists } from './lib/file.js';
-import { blogTemplate, makeHTML } from './make-html.js';
+import { blogTemplate, makeHTML, makeIndex } from './make-html.js';
 
 const BLOG_DIR = './database';
 const OUTPUT_DIR = './dist';
@@ -36,6 +36,9 @@ async function main() {
 
     await writeFile(join(OUTPUT_DIR, fileName), blog, { flag: 'w+' });
   }
+
+  const index = blogTemplate('Bloggið mitt!', makeIndex());
+  await writeFile(join(OUTPUT_DIR, 'index.html'), index, { flag: 'w+' });
 }
 
 main().catch((err) => console.error(err));
