@@ -37,7 +37,7 @@ async function main() {
     await writeFile(join(OUTPUT_DIR, fileName), blog, { flag: 'w+' });
   }
 
-  const index = blogTemplate('Bloggið mitt!', makeIndex());
+  const index = makeIndex();
   await writeFile(join(OUTPUT_DIR, 'index.html'), index, { flag: 'w+' });
 }
 
