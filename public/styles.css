@@ -2,9 +2,11 @@ ul {
   display: flex;
   font-size: 2rem;
   list-style: none;
+
 }
 
 ul li {
+  /* stylelint-disable-next-line color-named */
   border: 1px solid blue;
   border-radius: 5px;
   margin-left: 1rem;
@@ -12,8 +14,10 @@ ul li {
 }
 
 section {
+  /* stylelint-disable-next-line color-named */
   background-color: yellow;
   margin: 0 auto;
   max-width: 1000px;
+  overflow-wrap: break-word;
   width: 100%;
 }
