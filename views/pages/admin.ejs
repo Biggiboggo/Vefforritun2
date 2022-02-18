@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viðburðir</title>
+    <title>Admin svæði</title>
     <link rel="stylesheet" href="/public/styles.css">
 </head>
 <body>
-    <h1>Viðburðasíðan</h1>
+    <h1>Viðburðar umsjón</h1>
 
     <h2>Viðburðir á næstunni</h2>
 
@@ -24,6 +24,23 @@
             <% }) %>
         </ul>
     <% } %>
-    <a href="/admin/login">Innskráning stjórnanda</a>
+    
+    <h2>Nýr viðburður</h2>
+
+    <form method="post" enctype="application/x-www-form-urlencoded">
+
+        <div class="field">
+          <label for="name">Nafn*:</label>
+          <input type="text" name="name">
+        </div>
+
+        <div class="field field--textarea">
+          <label for="comment">Lýsing*:</label>
+          <textarea name="comment"></textarea>
+        </div>
+        <input type="submit" class="button button--large button--margin" value="Skrá viðburð">
+    </form>
+    <p>Innskráður sem: <b>admin</b></p>
+    <a href="/">Útskrá</a>
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viðburður</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <% events.forEach((events)=> { %>
+        <h1><%= events.name%></h1>
+        <p><%= events.description%></p>
+    <% }) %>
+
+    <h2>Skráningar á viðburð</h2>
+    <ul>
+      <% signings.forEach((signings)=> { %>
+        <li>
+          <%= signings.name%> <br>
+          <%= signings.comment%>
+        </li>
+      <% }) %>
+  </ul>
+
+    <h2>Skráðu þig</h2>
+    
+    <form method="post" action="/post" enctype="application/x-www-form-urlencoded">
+
+        <div class="field">
+          <label for="name">Nafn*</label>
+          <input type="text" name="name">
+        </div>
+
+        <div class="field field--textarea">
+          <label for="comment">Athugasemd:</label>
+          <textarea name="comment"></textarea>
+        </div>
+        <input type="hidden" name="id" value=<% events.forEach((events)=> { %>
+            <%= events.id%>
+      <% }) %>>
+        <input type="submit" class="button button--large button--margin" value="Skrá mig">
+      </form>
+      <a href="/">Til baka</a>
+</body>
+</html>
