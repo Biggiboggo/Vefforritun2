@@ -15,7 +15,7 @@ dotenv.config();
 const {
   PORT: port = 3000,
   SESSION_SECRET: sessionSecret,
-  DATABASE_URL: connectionString = 'postgres://acrjuiabrowifk:882bcd3f42fb0f4f4c687b91a483f20e60227bff4bbcdc1d639a7e74cffff618@ec2-34-253-29-48.eu-west-1.compute.amazonaws.com:5432/d53d4raf410lgh',
+  DATABASE_URL: connectionString,
 } = process.env;
 
 if (!connectionString || !sessionSecret) {
