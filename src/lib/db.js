@@ -153,7 +153,6 @@ export async function listEvent(slug) {
 }
 
 export async function deleteEvent(id) {
-  console.log(id);
   const q = `
     DELETE FROM
       events
