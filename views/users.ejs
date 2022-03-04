@@ -1,0 +1,13 @@
+<%- include('header') -%>
+
+<h1>Notenda umsjón</h1>
+
+<section class="events">
+  <ul class="events__list">
+    <% for (const user of users) { %>
+      <li class="events__event">
+        <p class="events__eventDescription"><%= user.username %></p>
+      </li>
+    <% } %>
+  </ul>
+</section>

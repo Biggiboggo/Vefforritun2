@@ -152,6 +152,37 @@ export async function listEvent(slug) {
   return null;
 }
 
+export async function deleteEvent(id) {
+  console.log(id);
+  const q = `
+    DELETE FROM
+      events
+    WHERE id = $1
+  `;
+
+  await query(q, [id]);
+
+  return null;
+}
+
+export async function listEventByID(id) {
+  const q = `
+    SELECT
+      id, name, slug, description, created, updated
+    FROM
+      events
+    WHERE id = $1
+  `;
+
+  const result = await query(q, [id]);
+
+  if (result && result.rowCount === 1) {
+    return result.rows[0];
+  }
+
+  return null;
+}
+
 // TODO gætum fellt þetta fall saman við það að ofan
 export async function listEventByName(name) {
   const q = `
@@ -191,4 +222,75 @@ export async function listRegistered(event) {
 
 export async function end() {
   await pool.end();
+}
+
+export async function createUser({ name, username, password, admin } = {}) {
+  const q = `
+    INSERT INTO users
+      (name, username, password, admin)
+    VALUES
+      ($1, $2, $3, $4)
+    RETURNING id, name, username, password, admin;
+  `;
+  const values = [name, username, password, admin];
+  const result = await query(q, values);
+
+  if (result && result.rowCount === 1) {
+    return result.rows[0];
+  }
+
+  return null;
+}
+
+export async function listUsers() {
+  const q = `
+    SELECT
+      id, name, username, admin
+    FROM
+      users
+  `;
+
+  const result = await query(q);
+
+  if (result) {
+    return result.rows;
+  }
+
+  return null;
+}
+
+export async function listUser(id) {
+  const q = `
+    SELECT
+    id, name, username, admin
+    FROM
+      users
+    WHERE id = $1
+  `;
+
+  const result = await query(q, [id]);
+
+  if (result && result.rowCount === 1) {
+    return result.rows[0];
+  }
+
+  return null;
+}
+
+export async function listUserByName(username) {
+  const q = `
+    SELECT
+      id, name, username, admin
+    FROM
+      users
+    WHERE username = $1
+  `;
+
+  const result = await query(q, [username]);
+
+  if (result && result.rowCount === 1) {
+    return result.rows[0];
+  }
+
+  return null;
 }
