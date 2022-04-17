@@ -68,6 +68,7 @@ function Container2({ contents }: {
         
         return (
           <section key={i}>
+            <title>{title2}</title>
             <h1>{title2}</h1>
           </section>
         );

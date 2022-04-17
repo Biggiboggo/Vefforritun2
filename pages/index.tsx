@@ -33,6 +33,7 @@ function Container({ contents }: {
 
         return (
           <section key={i}>
+            <title>{title}</title>
             <h1>{title}</h1>
             <p>{intro}</p>
             <Link href={`/${uri}`}>{linkname}</Link><br></br>
